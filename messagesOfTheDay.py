@@ -1,7 +1,6 @@
 #!/usr/bin/python36
 import requests
 import json
-from sys import argv
 import xlwt, os
 import datetime
 from dateutil import parser
