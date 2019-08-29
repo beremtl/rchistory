@@ -8,12 +8,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Python >= 3.6
+Verison Python = 3.6
+
 Python module:
-1) requests
-2) xlwt
-```
-pip3 install requests xlwt
+1) `requests`
+2) `xlwt`
+```sh
+$ pip3 install requests xlwt
 ```
 
 ### Installing
@@ -43,19 +44,15 @@ You can put this scripts in your `crontab`.
 ```
 It meens that script will be started every 30 minutes
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## Authors
 
-* **Alex Sapon** - *GPP* - [PurpleBooth](https://github.com/beremtl)
+* **Alex Sapon** - *GPP* - [beremtl](https://github.com/beremtl)
 
 See also the list of [contributors](https://github.com/beremtl/rchistory/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
