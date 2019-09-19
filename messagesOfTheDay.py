@@ -1,6 +1,7 @@
 #!/usr/bin/python36
 import requests
 import json
+from sys import argv
 import xlwt, os
 import datetime
 from dateutil import parser
@@ -18,7 +19,7 @@ headers = {
     'Content-type': 'application/json',
 }
 # change to localzone
-delta = datetime.timedelta(hours=5)
+delta = datetime.timedelta(hours=variables.deltahour)
 # todays date
 now = datetime.date.today()
 # path where to save
@@ -51,18 +52,21 @@ if resp.status_code == requests.codes.ok:
                     i=1
                     # create excel book
                     wb = xlwt.Workbook()
-                    ws = wb.add_sheet('List1')
-                    ws.write(0,0,'Date')
-                    ws.write(0,1,'Time')
-                    ws.write(0,2,'FIO')
-                    ws.write(0,3,'Message')
+                    ws = wb.add_sheet('Лист1')
+                    ws.write(0,0,'Дата')
+                    ws.write(0,1,'Время')
+                    ws.write(0,2,'ФИО')
+                    ws.write(0,3,'Сообщение')
                     for obj_mes in out_m:
                        # get time from json
                        times = datetime.datetime.strptime(obj_mes['ts'][obj_mes['ts'].find('T')+1:obj_mes['ts'].find('Z')-4],"%H:%M:%S")
                        ws.write(i,0,obj_mes['ts'][0:obj_mes['ts'].find('T')])
                        ws.write(i,1,str(datetime.datetime.time(times+delta)))
                        ws.write(i,2,obj_mes['u']['name'])
-                       ws.write(i,3,obj_mes['msg'])
+                       if ('file' in obj_mes):
+                           ws.write(i,3,obj_mes['file']['name'])
+                       else:
+                           ws.write(i,3,obj_mes['msg'])
                        i = i + 1
                     # save file if today was some messages
                     if out_m:

@@ -1,6 +1,12 @@
+# User Token
 token = "asgaregaerhtehaetheth"
+# User ID
 userid = "DGEDEefw45232SGgsrgwsr"
+# Server Address
 address = "http://localhost:3000/api/v1"
+# Timezone (in hours)
+deltahour = 5
+# List of chat's ID's witch don't use in script
 listId = [
          "qWQJvirAasdfa23542GWEEFxFiyQKdvur3m8Kyy",
          "4wMzAWGR2345rsdfgwrfg8Nd3",

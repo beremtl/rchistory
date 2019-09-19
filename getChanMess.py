@@ -13,7 +13,7 @@ headers = {
     'X-User-Id': variables.userid,
     'Content-type': 'application/json',
 }
-delta = datetime.timedelta(hours=5)
+delta = datetime.timedelta(hours=variables.deltahour)
 now = datetime.date.today()
 newpath = "/mnt/messages/channels"
 if not os.path.exists(newpath):
@@ -37,18 +37,21 @@ if resp.status_code == requests.codes.ok:
                  r = response.json()
                  i=1
                  wb = xlwt.Workbook()
-                 ws = wb.add_sheet('List1')
-                 ws.write(0,0,'Date')
-                 ws.write(0,1,'Time')
-                 ws.write(0,2,'FIO')
-                 ws.write(0,3,'Message')
+                 ws = wb.add_sheet('Лист1')
+                 ws.write(0,0,'Дата')
+                 ws.write(0,1,'Время')
+                 ws.write(0,2,'ФИО')
+                 ws.write(0,3,'Сообщение')
                  for obj_mes in r['messages']:
                     # get time from json
                     times = datetime.datetime.strptime(obj_mes['ts'][obj_mes['ts'].find('T')+1:obj_mes['ts'].find('Z')-4],"%H:%M:%S")
                     ws.write(i,0,obj_mes['ts'][0:obj_mes['ts'].find('T')])
                     ws.write(i,1,str(datetime.datetime.time(times+delta)))
                     ws.write(i,2,obj_mes['u']['name'])
-                    ws.write(i,3,obj_mes['msg'])
+                    if ('file' in obj_mes):
+                        ws.write(i,3,obj_mes['file']['name'])
+                    else:
+                        ws.write(i,3,obj_mes['msg'])
                     i = i + 1
                  wb.save(newpath+"/"+obj['name']+".xls")
             resp2 = requests.post(variables.address+'/channels.leave', headers=headers, data=data1)
