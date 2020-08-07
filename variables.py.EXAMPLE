@@ -16,3 +16,5 @@ listId = [
          "Qefqefw2r2342egfwrg4hrTLm8Nd3",
          "LKJL32423ffsfe#%#",
 ]
+# Path where to save files
+path = "/mnt/messages/"
