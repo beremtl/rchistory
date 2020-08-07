@@ -23,7 +23,7 @@ delta = datetime.timedelta(hours=variables.deltahour)
 # todays date
 now = datetime.date.today()
 # path where to save
-newpath = "/mnt/messages/"+str(datetime.date.today().year)+"/"+str(datetime.date.today().month)+"/"+str(datetime.date.today().day)#+datetime.datetime.strftime(now,"%Y-%m-%d")
+newpath = variables.path+str(datetime.date.today().year)+"/"+str(datetime.date.today().month)+"/"+str(datetime.date.today().day)#+datetime.datetime.strftime(now,"%Y-%m-%d")
 # if path is not exist then create
 if not os.path.exists(newpath):
     os.makedirs(newpath)
